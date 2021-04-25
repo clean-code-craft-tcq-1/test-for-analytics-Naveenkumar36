@@ -2,7 +2,6 @@
 
 Design tests for Analytics functionality on a Battery Monitoring System.
 
-Fill the parts marked '_enter' in the **Tasks** section below.
 
 ## Analysis-functionality to be tested
 
@@ -27,8 +26,10 @@ Notification must be sent when a new report is available.
 List the dependencies of the Analysis-functionality.
 
 1. Access to the Server containing the telemetrics in a csv file
-1. _enter dependency
-1. _enter dependency
+1. Report generator
+1. Types of Report
+1. Notify mechanism
+1. List of Notifier
 
 (add more if needed)
 
@@ -40,10 +41,10 @@ What is included in the software unit-test? What is not? Fill this table.
 |---------------------------|---------------|---
 Battery Data-accuracy       | No            | We do not test the accuracy of data
 Computation of maximum      | Yes           | This is part of the software being developed
-Off-the-shelf PDF converter | _enter Yes/No | _enter reasoning
-Counting the breaches       | _enter Yes/No | _enter reasoning
-Detecting trends            | _enter Yes/No | _enter reasoning
-Notification utility        | _enter Yes/No | _enter reasoning
+Off-the-shelf PDF converter | No | make use mock functionality to test behaviour
+Counting the breaches       | Yes | This is part of the software being developed
+Detecting trends            | Yes | This is part of the software being developed
+Notification utility        | No | make use mock functionality to test behaviour
 
 ### List the Test Cases
 
@@ -53,8 +54,10 @@ Add to these tests:
 
 1. Write minimum and maximum to the PDF from a csv containing positive and negative readings
 1. Write "Invalid input" to the PDF when the csv doesn't contain expected data
-1. _enter a test
-1. _enter a test
+1. Breach count based on csv data
+1. Record trends based on csv data
+1. Stub Notification mechanism
+1. Stub Report generator
 
 (add more)
 
@@ -68,8 +71,8 @@ Enter one part that's real and another part that's faked/mocked.
 |--------------------------|--------------|-----------------------------|---
 Read input from server     | csv file     | internal data-structure     | Fake the server store
 Validate input             | csv data     | valid / invalid             | None - it's a pure function
-Notify report availability | _enter input | _enter output               | _enter fake or mock
-Report inaccessible server | _enter input | _enter output               | _enter fake or mock
-Find minimum and maximum   | _enter input | _enter output               | _enter fake or mock
-Detect trend               | _enter input | _enter output               | _enter fake or mock
-Write to PDF               | _enter input | _enter output               | _enter fake or mock
+Notify report availability | pdf file | void               | mock the notifier
+Report inaccessible server | csv path |  file not found            | Fake the server store
+Find minimum and maximum   | csv data | boolean              | None - it's a pure function
+Detect trend               | csv data | date and time               | None - it's a pure function
+Write to PDF               | analysis data | pdf file               | mock the pdf
